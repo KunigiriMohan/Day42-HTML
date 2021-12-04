@@ -9,7 +9,7 @@
     <body>
         <form>
             <header class="headerContainer"><h1>HTML 5 Form Input Fields</h1></header>
-            <div>
+            <div>                                                                               
                 <label for ="text">Text input type of Name : </label>
                 <input type="text" id="text" name="text">
                 <error-output class="text-error" for="text"></error-output>
@@ -21,6 +21,7 @@
             <div>
                 <label for="email">Email input type : </label>
                 <input type="email" id="email" name="email">
+                <error-output class="email-error" for="email"></error-output>
             </div>
             <div>
                 <label for="url">URL input type</label>
@@ -43,8 +44,8 @@
                 <input type="datetime-local" id="party" name="bday">
                 <span class="validity"></span>
             </div>
-            <div>
-                <label for="salary">Choose your salary: </label>
+            <div>   
+                <label for="salary">Choose your salary: </label>           
                 <input type="range" name="salary" id="salary" min="300000" max="500000" step="100" value="400000">
                 <output class="salary-output" for="salary">400000</output>
             </div>
@@ -53,13 +54,22 @@
             </div>
         </form>
         <script>
-            const text = document.querySelector('#text');
+            const text = document.querySelector('#text');                           //EventListner for checking name entered is correct or not
             const textError=document.querySelector('.text-error');
             text.addEventListener('input',function(){
-                let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');
+                let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$');                        //Regex for validaring name
                 if(nameRegex.test(text.value))
                 textError.textContent="";
-                else textError.textContent="Name is Incorrect";
+                else textError.textContent="Name is Incorrect";                     //Throwing error if entered email is wrong
+            });
+
+            const email = document.querySelector('#email');                                         //Eventlistner for checking Email entered is valid or not
+            const emailError=document.querySelector('.email-error');
+            email.addEventListener('input',function(){
+                let emailRegex=RegExp('^(abc)[\\.]{1}[a-z,A-Z]{3}[\\@]{1}(bl)[\\.]{1}(co)[\\.][a-z]{2}$');              //Regex for verifying Email
+                if(emailRegex.test(email.value))
+                emailError.textContent="";
+                else emailError.textContent="email is Incorrect";               //Throwing error if entered email is wrong 
             });
 
             const salary = document.querySelector('#salary');
