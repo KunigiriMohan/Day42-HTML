@@ -76,7 +76,7 @@
             const password = document.querySelector('#pwd');                                         //Eventlistner for checking Password entered is valid or not
             const passwordError=document.querySelector('.pwd-error');
             password.addEventListener('input',function(){
-                let passwordRegex=RegExp('^[a-z,A-Z]{8,}');              //Regex for verifying Password
+                let passwordRegex=RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$');              //Regex for verifying Password
                 if(passwordRegex.test(password.value))
                 passwordError.textContent="";
                 else passwordError.textContent="Password is Incorrect";               //Throwing error if entered password is wrong 
